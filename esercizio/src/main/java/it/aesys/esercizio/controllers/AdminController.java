@@ -22,7 +22,7 @@ public class AdminController {
         List<AdminDtoResponse> response = service.getAllAdmin();
         return ResponseEntity.ok(response);
     }
-
+//    @Operation(security = @SecurityRequirement(name = "bearer-authentication"))
     @PostMapping
     public ResponseEntity<Void> createAdmin(@RequestBody AdminDtoRequest admin) throws BadInputException {
        service.createAdmin(admin);

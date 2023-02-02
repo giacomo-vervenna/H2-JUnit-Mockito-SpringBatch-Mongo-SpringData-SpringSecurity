@@ -1,5 +1,7 @@
 package it.aesys.esercizio.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.aesys.esercizio.dto.users.UserDtoRequest;
 import it.aesys.esercizio.dto.users.UserDtoResponse;
 import it.aesys.esercizio.exception.BadInputException;
@@ -7,6 +9,7 @@ import it.aesys.esercizio.client.service.MongoServiceClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +27,7 @@ public class UserClientController {
     }
 
     @GetMapping
+    @Operation(security = @SecurityRequirement(name = "bearer-authentication"))
     ResponseEntity<List<UserDtoResponse>> getAllUser() {
         return mongoClient.getAllUser();
     }

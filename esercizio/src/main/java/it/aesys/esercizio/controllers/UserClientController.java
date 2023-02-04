@@ -27,7 +27,7 @@ public class UserClientController {
     }
 
     @GetMapping
-    @Operation(security = @SecurityRequirement(name = "bearer-authentication"))
+//    @Operation(security = @SecurityRequirement(name = ""))
     ResponseEntity<List<UserDtoResponse>> getAllUser() {
         return mongoClient.getAllUser();
     }

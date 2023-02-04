@@ -23,11 +23,11 @@ public class AdminController {
         return ResponseEntity.ok(response);
     }
 //    @Operation(security = @SecurityRequirement(name = "bearer-authentication"))
-    @PostMapping
-    public ResponseEntity<Void> createAdmin(@RequestBody AdminDtoRequest admin) throws BadInputException {
-       service.createAdmin(admin);
-       return ResponseEntity.status(HttpStatus.CREATED).build();
-    }
+//    @PostMapping
+//    public ResponseEntity<Void> createAdmin(@RequestBody AdminDtoRequest admin) throws BadInputException {
+//       service.createAdmin(admin);
+//       return ResponseEntity.status(HttpStatus.CREATED).build();
+//    }
 
     @GetMapping("/{fiscalCode}")
     public ResponseEntity<AdminDtoResponse> getAdminByFiscalCode (@PathVariable ("fiscalCode") String fiscalCode) throws BadInputException {

@@ -26,15 +26,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void createUser(UserDtoRequest user) throws BadInputException {
-        if (user != null && user.getFiscalCode() != null && user.getFiscalCode().length() == 16) {
+    public void createUser(UserDtoRequest user) {
+        try {
+            if (user != null && user.getFiscalCode() != null && user.getFiscalCode().length() == 16) {
 
-            User newUser = new User();
-            mapper.map(user, newUser);
+                User newUser = new User();
+                mapper.map(user, newUser);
 
-            mongoRepo.save(newUser);
-        } else {
-            throw new BadInputException();
+                mongoRepo.save(newUser);
+            } else {
+                throw new BadInputException();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -61,7 +65,7 @@ public class UserServiceImpl implements UserService {
     public UserDtoResponse getUserByFiscalCode(String fiscalCode) throws BadInputException {
         if (fiscalCode != null) {
 
-         User user = mongoRepo.findUserByFiscalCode(fiscalCode);
+            User user = mongoRepo.findUserByFiscalCode(fiscalCode);
             UserDtoResponse response = new UserDtoResponse();
             mapper.map(user, response);
 

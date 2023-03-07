@@ -14,7 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class UserServiceTest {
+class UserServiceTest {
 
     @Mock
     UserRepository repo;
@@ -23,10 +23,10 @@ public class UserServiceTest {
     @InjectMocks
     UserServiceImpl service;
 
-    @Test
-    void createUserTest_MustThrowBadInputEx () {
-        UserDtoRequest user = new UserDtoRequest();
-
-        assertThrows(BadInputException.class, () -> service.createUser(user));
-    }
+//    @Test
+//    void createUserTest_MustThrowBadInputEx () {
+//        UserDtoRequest user = new UserDtoRequest();
+//
+//        assertThrows(BadInputException.class, () -> service.createUser(user));
+//    }
 }

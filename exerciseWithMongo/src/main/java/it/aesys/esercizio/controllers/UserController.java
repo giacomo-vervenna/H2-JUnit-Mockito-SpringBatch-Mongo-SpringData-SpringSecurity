@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @PutMapping("/{fiscalCode}")
-    public ResponseEntity<Void> updateUserByFiscalCode (@PathVariable ("fiscalCode") String fiscalCode, @RequestBody UserDtoRequest update) throws BadInputException {
+    public ResponseEntity<Void> updateUserByFiscalCode (@PathVariable ("fiscalCode") String fiscalCode, @RequestBody UserDtoRequest update) {
         service.updateUserByFiscalCode(fiscalCode, update);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();

@@ -1,9 +1,13 @@
-package it.aesys.esercizio.entities;
+package com.example.passwordManager.entities;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,14 +17,7 @@ public class User {
 
     @BsonProperty("_id")
     private ObjectId id;
-    @NonNull
-    String fiscalCode;
-    @NonNull
-    String name;
-    @NonNull
-    String surname;
-    @NonNull
-    Address address;
-    @NonNull
-    String birthDate;
+    private String username;
+    private String pwd;
+    private List<Password> passwords;
 }

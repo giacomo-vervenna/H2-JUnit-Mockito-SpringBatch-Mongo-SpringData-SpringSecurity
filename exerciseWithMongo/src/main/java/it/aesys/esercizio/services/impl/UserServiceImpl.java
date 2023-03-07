@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
             UserDtoResponse response = new UserDtoResponse();
             mapper.map(user, response);
 
-            if (response == null) {
+            if (response.getName().isEmpty()) {
                 throw new IllegalArgumentException();
             } else {
                 return response;

@@ -8,6 +8,7 @@ import com.example.password_manager.repository.UserRepository;
 import com.example.password_manager.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,7 +18,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repo;
-
+    @Autowired
+    private PasswordEncoder encoder;
     @Autowired
     private ModelMapper mapper;
 
@@ -25,6 +27,7 @@ public class UserServiceImpl implements UserService {
     public void createUser(UserRequest userRequest) {
         User user = new User();
         mapper.map(userRequest, user);
+        user.setPwd(encoder.encode(user.getPwd()));
         repo.save(user);
     }
 

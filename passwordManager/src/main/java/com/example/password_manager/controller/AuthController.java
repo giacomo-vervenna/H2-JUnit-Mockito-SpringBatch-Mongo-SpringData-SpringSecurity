@@ -26,7 +26,7 @@ public class AuthController {
     private JwtTokenUtil jwtTokenUtil;
 
     @PostMapping("/login")
-    public ResponseEntity<?> login (@RequestBody @Nonnull AuthRequest request) {
+    public ResponseEntity<AuthResponse> login(@RequestBody @Nonnull AuthRequest request) {
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
@@ -42,5 +42,4 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
-
 }

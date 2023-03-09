@@ -1,4 +1,4 @@
-package com.example.passwordManager.entities;
+package com.example.password_manager.entities;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
